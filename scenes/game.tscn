@@ -59,7 +59,7 @@ animations = [{
 size = Vector2(8, 8)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u5sy4"]
-distance = -91.0
+distance = -110.0
 
 [sub_resource type="Animation" id="Animation_gee14"]
 resource_name = "Move"
@@ -105,9 +105,10 @@ unique_name_in_owner = true
 script = ExtResource("9_0tnpc")
 
 [node name="TileMap" type="TileMap" parent="."]
+rotation = -0.0030621756
 tile_set = SubResource("TileSet_7jktm")
 format = 2
-layer_0/tile_data = PackedInt32Array(65535, 0, 0, 0, 0, 0, 196604, 0, 0, 196605, 0, 0, 131066, 0, 0, 131065, 0, 0, -10, 0, 0, -11, 0, 0, 65527, 0, 0, 4, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 8, 0, 0, -65526, 0, 0, -65525, 0, 0, -131060, 0, 0)
+layer_0/tile_data = PackedInt32Array(65535, 0, 0, 0, 0, 0, 196604, 0, 0, 196605, 0, 0, 131066, 0, 0, 131065, 0, 0, -10, 0, 0, -11, 0, 0, 65527, 0, 0, 6, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 10, 0, 0, -131081, 0, 0, -131080, 0, 0, -65542, 0, 0, -65524, 0, 0, -65523, 0, 0, -131057, 0, 0, 327675, 0, 0, 196620, 0, 0)
 
 [node name="Player" type="CharacterBody2D" parent="."]
 z_index = 5
@@ -127,7 +128,10 @@ shape = SubResource("RectangleShape2D_eow3j")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(4, 4)
-limit_bottom = 81
+limit_left = -10000005
+limit_top = -9999990
+limit_right = 9999995
+limit_bottom = 100
 limit_smoothed = true
 position_smoothing_enabled = true
 
@@ -140,16 +144,25 @@ shape = SubResource("WorldBoundaryShape2D_u5sy4")
 [node name="Coins" type="Node" parent="."]
 
 [node name="Coin" parent="Coins" instance=ExtResource("5_iywne")]
-position = Vector2(90, 8)
+position = Vector2(122, 6)
 
 [node name="Coin2" parent="Coins" instance=ExtResource("5_iywne")]
-position = Vector2(202, -41)
+position = Vector2(248, -41)
 
 [node name="Coin3" parent="Coins" instance=ExtResource("5_iywne")]
 position = Vector2(-44, 25)
 
 [node name="Coin4" parent="Coins" instance=ExtResource("5_iywne")]
 position = Vector2(-165, -25)
+
+[node name="Coin5" parent="Coins" instance=ExtResource("5_iywne")]
+position = Vector2(200, 38)
+
+[node name="Coin6" parent="Coins" instance=ExtResource("5_iywne")]
+position = Vector2(-73, 55)
+
+[node name="Coin7" parent="Coins" instance=ExtResource("5_iywne")]
+position = Vector2(-88, -42)
 
 [node name="Platforms" type="Node" parent="."]
 
@@ -165,13 +178,37 @@ autoplay = "Move"
 [node name="Node" type="Node" parent="Platforms/Platform"]
 
 [node name="Platform2" parent="Platforms" instance=ExtResource("8_0tnpc")]
-position = Vector2(-47, 14)
+position = Vector2(-45, 11)
+
+[node name="Platform6" parent="Platforms" instance=ExtResource("8_0tnpc")]
+position = Vector2(-72, 44)
+
+[node name="Platform5" parent="Platforms" instance=ExtResource("8_0tnpc")]
+position = Vector2(242, 15)
+
+[node name="Platform4" parent="Platforms" instance=ExtResource("8_0tnpc")]
+position = Vector2(227, 34)
 
 [node name="Platform3" parent="Platforms" instance=ExtResource("8_0tnpc")]
-position = Vector2(-47, -1)
+position = Vector2(-56, -11)
+
+[node name="Platform7" parent="Platforms" instance=ExtResource("8_0tnpc")]
+position = Vector2(232, -2)
+
+[node name="Platform8" parent="Platforms" instance=ExtResource("8_0tnpc")]
+position = Vector2(-159, -36)
+
+[node name="Label" type="Label" parent="Platforms/Platform8"]
+offset_left = -133.0
+offset_top = 127.0
+offset_right = -87.0
+offset_bottom = 146.0
+theme_override_fonts/font = ExtResource("8_gee14")
+theme_override_font_sizes/font_size = 8
+text = "Secret"
 
 [node name="Enemy" parent="." instance=ExtResource("7_u5sy4")]
-position = Vector2(109, 15)
+position = Vector2(152, 16)
 
 [node name="Label" type="Label" parent="."]
 offset_left = -37.0
@@ -191,3 +228,9 @@ offset_bottom = 38.0
 theme_override_fonts/font = ExtResource("8_gee14")
 theme_override_font_sizes/font_size = 8
 text = "You collected 0 coins"
+
+[node name="Platform" parent="." instance=ExtResource("8_0tnpc")]
+position = Vector2(-276, 89)
+
+[node name="Coin" parent="." instance=ExtResource("5_iywne")]
+position = Vector2(-283, 81)
